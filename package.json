@@ -1,0 +1,71 @@
+{
+  "name": "test-writer",
+  "version": "1.0.0",
+  "description": "Writing Tests made easy",
+  "author": "Rajat Sudagade",
+  "bin": {
+    "test-writer": "./bin/run"
+  },
+  "homepage": "https://github.com/rajatk16/test-writer",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "rajatk16/test-writer",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^2",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-plugins": "^2.4.7",
+    "enquirer": "^2.3.6",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.31",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "oclif": "^3",
+    "prettier": "^2.8.8",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.2",
+    "typescript": "^4.9.5"
+  },
+  "oclif": {
+    "bin": "test-writer",
+    "dirname": "test-writer",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "unit": {
+        "description": "Write Unit Tests"
+      }
+    }
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "bugs": "https://github.com/rajatk16/test-writer/issues",
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts"
+}
