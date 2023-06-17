@@ -21,7 +21,7 @@
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.4.7",
     "enquirer": "^2.3.6",
-    "openai": "^3.2.1"
+    "openai": "^3.3.0"
   },
   "devDependencies": {
     "@types/node": "^16.18.31",
